@@ -12,7 +12,8 @@ st.set_page_config(
 # Load data
 @st.cache_data
 def load_data():
-    df = pd.read_excel(r"C:\Users\HP\Downloads\Afficionado Coffee Roasters.xlsx")
+    url = "https://drive.google.com/uc?id=1-CAHfPbgNmFYkO9OT4QDeEcOTn5u5KrQ"
+    df = pd.read_excel(url, engine='openpyxl')
     df['transaction_time'] = pd.to_datetime(df['transaction_time'], format='%H:%M:%S')
     df['hour'] = df['transaction_time'].dt.hour
     df['day_of_week'] = pd.to_datetime('2025-01-01').day_name()
